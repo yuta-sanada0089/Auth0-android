@@ -1,10 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- Light theme -->
+    <color name="buttonTitleColor">@color/light100</color>
+    <color name="buttonBackgroundColor">@color/twitter</color>
+    <color name="disableButtonTitleColor">@color/light100</color>
+    <color name="disableButtonBackgroundColor">@color/dark26</color>
+    <color name="baseColor">@color/altLightGray</color>
+    <color name="baseColor2">@color/light100</color>
+    <color name="subColor">@color/altLightGray2</color>
+    <color name="primaryTextColor">@color/dark87</color>
+    <color name="secondaryTextColor">@color/dark26</color>
+    <color name="tertiaryTextColor">@color/dark56</color>
+    <color name="alertTextColor">@color/uiRed</color>
+    <color name="linkTextColor">@color/uiBlue</color>
+    <color name="borderColor">@color/dark12</color>
+    <color name="dark87">#212121</color>
+    <color name="dark56">#707070</color>
+    <color name="dark26">#C2C2C2</color>
+    <color name="dark12">#E0E0E0</color>
+
+    <color name="light100">#FFFFFF</color>
+    <color name="light54">#89FFFFFF</color>
+    <color name="light30">#4CFFFFFF</color>
+    <color name="light12">#1EFFFFFF</color>
+
+    <color name="accentGreen">#D6F1EE</color>
+    <color name="accentRed">#FFE5E8</color>
+    <color name="accentYellow">#FFF6E2</color>
+
+    <color name="altDarkGray">#3A3A3A</color>
+    <color name="altDarkGray2">#282828</color>
+    <color name="altLightGray">#EDEDED</color>
+    <color name="altLightGray2">#F7F7F7</color>
+
+    <color name="uiBlue">#037FFF</color>
+    <color name="uiRed">#DE3C4B</color>
+
+    <color name="shadowColor">#7F000000</color>
+    <color name="dimColor">#42000000</color>
+    <color name="facebook">#3A579D</color>
+    <color name="google">#FF3D00</color>
+    <color name="line">#4ECD00</color>
+    <color name="twitter">#1DA1F2</color>
+    <color name="apple">#000000</color>
 </resources>

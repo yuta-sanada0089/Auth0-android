@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="buttonTitleColor">@color/light100</color>
+    <color name="buttonBackgroundColor">@color/twitter</color>
+    <color name="disableButtonTitleColor">@color/light100</color>
+    <color name="disableButtonBackgroundColor">@color/light12</color>
+    <color name="baseColor">@color/altDarkGray</color>
+    <color name="baseColor2">@color/dark87</color>
+    <color name="subColor">@color/altDarkGray2</color>
+    <color name="primaryTextColor">@color/light100</color>
+    <color name="secondaryTextColor">@color/light54</color>
+    <color name="tertiaryTextColor">@color/light54</color>
+    <color name="alertTextColor">@color/uiRed</color>
+    <color name="linkTextColor">@color/uiBlue</color>
+    <color name="borderColor">@color/light12</color>
+</resources>
