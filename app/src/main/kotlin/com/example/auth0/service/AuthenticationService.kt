@@ -13,10 +13,11 @@ import com.auth0.android.provider.WebAuthProvider
 import com.auth0.android.result.Credentials
 import com.example.auth0.R
 import kotlinx.coroutines.suspendCancellableCoroutine
+import javax.inject.Inject
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 
-class AuthenticationService(val context: Context) {
+class AuthenticationService @Inject constructor(private val context: Context) {
     private val client = Auth0(
         context.getString(R.string.com_auth0_client_id),
         context.getString(R.string.com_auth0_domain)
@@ -25,7 +26,7 @@ class AuthenticationService(val context: Context) {
     private val apiClient = AuthenticationAPIClient(client)
     private val credentialManager = CredentialsManager(apiClient, SharedPreferencesStorage(context))
 
-    suspend fun credentioals(): Credentials =
+    suspend fun credentials(): Credentials =
         suspendCancellableCoroutine { continuetion ->
             credentialManager.getCredentials(object : Callback<Credentials, CredentialsManagerException> {
                 override fun onFailure(error: CredentialsManagerException) {
