@@ -38,7 +38,7 @@ class AuthenticationService @Inject constructor(private val context: Context) {
             })
         }
 
-    suspend fun auth(activity: Activity, connection: String): Credentials =
+    suspend fun auth(connection: String): Credentials =
         suspendCancellableCoroutine { continuetion ->
             WebAuthProvider.login(client)
                 .withAudience("https://${R.string.com_auth0_domain}/userinfo")
@@ -46,7 +46,7 @@ class AuthenticationService @Inject constructor(private val context: Context) {
                 .withScope("openid email offline_access")
                 .withConnection(connection)
                 .withParameters(mapOf("max_age" to "30"))
-                .start(activity, object : Callback<Credentials, AuthenticationException> {
+                .start(context, object : Callback<Credentials, AuthenticationException> {
                     override fun onFailure(error: AuthenticationException) {
                         RuntimeException("Failed to auth")
                         continuetion.resumeWithException(error)
