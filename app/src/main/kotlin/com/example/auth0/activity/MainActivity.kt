@@ -5,8 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.compose.runtime.Composable
+import androidx.hilt.navigation.compose.hiltNavGraphViewModel
 import androidx.lifecycle.Observer
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.auth0.screens.LoginScreen
+import com.example.auth0.screens.SplashScreen
+import com.example.auth0.screens.TopScreen
 import com.example.auth0.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -20,16 +26,27 @@ class MainActivity : AppCompatActivity() {
         viewModel.credentialsLivedata.observe(this, Observer {
             val intent = Intent(application, TopActivity::class.java)
             startActivity(intent)
-        })
+            if (it.idToken != null) {
 
-        viewModel.errorLiveData.observe(this, Observer {
-            val intent = Intent(application, LoginActivity::class.java)
-            startActivity(intent)
+            }
         })
     }
 }
 
 @Composable
-fun MainAppEntry() {
+fun MainScreen() {
+    val viewModel = hiltNavGraphViewModel<MainViewModel>()
+
     val navController = rememberNavController()
+    NavHost(navController = navController, startDestination = "splash") {
+        composable("splash") {
+            SplashScreen()
+        }
+        composable("login") {
+            LoginScreen(navController)
+        }
+        composable("top") {
+            TopScreen(navController)
+        }
+    }
 }

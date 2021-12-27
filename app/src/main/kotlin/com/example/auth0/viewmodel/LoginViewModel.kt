@@ -15,10 +15,10 @@ class LoginViewModel(application: Application): AndroidViewModel(application) {
     val credentialsLivedata: MutableLiveData<Credentials> = MutableLiveData()
     private val authenticationService = AuthenticationService(getApplication<Application>().applicationContext)
 
-    fun login(activity: Activity, connection: String) {
+    fun login(connection: String) {
         viewModelScope.launch {
             try {
-                val credentials = authenticationService.auth(activity, connection)
+                val credentials = authenticationService.auth(connection)
                 credentialsLivedata.postValue(credentials)
             } catch (error: CredentialsManagerException) {
                 errorLiveData.postValue(error)
