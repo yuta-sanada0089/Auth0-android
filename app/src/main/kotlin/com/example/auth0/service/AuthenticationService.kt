@@ -1,6 +1,5 @@
 package com.example.auth0.service
 
-import android.app.Activity
 import android.content.Context
 import com.auth0.android.Auth0
 import com.auth0.android.authentication.AuthenticationAPIClient
@@ -38,12 +37,11 @@ class AuthenticationService @Inject constructor(private val context: Context) {
             })
         }
 
-    suspend fun auth(connection: String): Credentials =
+    suspend fun auth(context: Context, connection: String): Credentials =
         suspendCancellableCoroutine { continuetion ->
             WebAuthProvider.login(client)
-                .withAudience("https://${R.string.com_auth0_domain}/userinfo")
                 .withScheme(context.packageName)
-                .withScope("openid email offline_access")
+                .withScope("openid profile email")
                 .withConnection(connection)
                 .withParameters(mapOf("max_age" to "30"))
                 .start(context, object : Callback<Credentials, AuthenticationException> {
