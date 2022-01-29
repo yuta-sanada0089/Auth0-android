@@ -3,7 +3,6 @@ package com.example.auth0.screens
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import com.example.auth0.viewmodel.SplashViewModel
 
@@ -12,10 +11,10 @@ fun SplashScreen(navController: NavController, viewModel: SplashViewModel = hilt
     viewModel.fetchCredential()
 
     val lifecycleOwner = LocalLifecycleOwner.current
-    viewModel.isLoginLiveData.observe(lifecycleOwner, Observer {
-        when(it) {
+    viewModel.isLoginLiveData.observe(lifecycleOwner) { isLogin ->
+        when(isLogin) {
             true -> navController.navigate("top")
             false -> navController.navigate("login")
         }
-    })
+    }
 }
