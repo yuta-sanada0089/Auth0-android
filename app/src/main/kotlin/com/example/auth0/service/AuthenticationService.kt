@@ -16,7 +16,7 @@ import javax.inject.Inject
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 
-class AuthenticationService @Inject constructor(private val context: Context) {
+class AuthenticationService @Inject constructor(context: Context) {
     private val client = Auth0(
         context.getString(R.string.com_auth0_client_id),
         context.getString(R.string.com_auth0_domain)
