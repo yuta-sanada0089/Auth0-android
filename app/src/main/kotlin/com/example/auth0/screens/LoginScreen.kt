@@ -12,7 +12,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import com.example.auth0.viewmodel.LoginViewModel
 
@@ -41,13 +40,12 @@ fun LoginScreen(navController: NavController) {
             Text(text = "Googleでログイン")
         }
     }
-    viewModel.isLoginLiveData.observe(lifecycleOwner, Observer {
-        if(it == true) {
-            navController.navigate("top")
-        } else {
-            showToastMessage(context, "login error...")
+    viewModel.isLoginLiveData.observe(lifecycleOwner) { isLogin ->
+        when (isLogin) {
+            true -> navController.navigate("top")
+            false -> showToastMessage(context, "login error...")
         }
-    })
+    }
 }
 
 private fun showToastMessage(context: Context, message:String){
