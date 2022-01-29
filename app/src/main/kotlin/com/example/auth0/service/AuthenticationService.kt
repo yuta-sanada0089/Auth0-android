@@ -46,7 +46,6 @@ class AuthenticationService @Inject constructor(context: Context) {
                 .withParameters(mapOf("max_age" to "30"))
                 .start(context, object : Callback<Credentials, AuthenticationException> {
                     override fun onFailure(error: AuthenticationException) {
-                        RuntimeException("Failed to auth")
                         continuation.resumeWithException(error)
                     }
 
