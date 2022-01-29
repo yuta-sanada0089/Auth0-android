@@ -26,19 +26,19 @@ class AuthenticationService @Inject constructor(private val context: Context) {
     private val credentialManager = CredentialsManager(apiClient, SharedPreferencesStorage(context))
 
     suspend fun credentials(): Credentials =
-        suspendCancellableCoroutine { continuetion ->
+        suspendCancellableCoroutine { continuation ->
             credentialManager.getCredentials(object : Callback<Credentials, CredentialsManagerException> {
                 override fun onFailure(error: CredentialsManagerException) {
-                    continuetion.resumeWithException(error)
+                    continuation.resumeWithException(error)
                 }
                 override fun onSuccess(result: Credentials) {
-                    continuetion.resume(result)
+                    continuation.resume(result)
                 }
             })
         }
 
     suspend fun auth(context: Context, connection: String): Credentials =
-        suspendCancellableCoroutine { continuetion ->
+        suspendCancellableCoroutine { continuation ->
             WebAuthProvider.login(client)
                 .withScheme(context.packageName)
                 .withScope("openid profile email")
@@ -47,12 +47,12 @@ class AuthenticationService @Inject constructor(private val context: Context) {
                 .start(context, object : Callback<Credentials, AuthenticationException> {
                     override fun onFailure(error: AuthenticationException) {
                         RuntimeException("Failed to auth")
-                        continuetion.resumeWithException(error)
+                        continuation.resumeWithException(error)
                     }
 
                     override fun onSuccess(result: Credentials) {
                         credentialManager.saveCredentials(result)
-                        continuetion.resume(result)
+                        continuation.resume(result)
                     }
                 })
         }
