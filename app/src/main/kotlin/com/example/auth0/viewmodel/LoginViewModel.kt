@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.auth0.android.authentication.storage.CredentialsManagerException
+import com.auth0.android.authentication.AuthenticationException
 import com.example.auth0.service.AuthenticationService
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -18,9 +18,9 @@ class LoginViewModel @Inject constructor(private val authenticationService: Auth
     fun login(context: Context, connection: String) {
         viewModelScope.launch {
             try {
-                val credentials = authenticationService.auth(context, connection)
+                authenticationService.auth(context, connection)
                 isLoginLiveData.postValue(true)
-            } catch (error: CredentialsManagerException) {
+            } catch (error: AuthenticationException) {
                 isLoginLiveData.postValue(false)
                 errorLiveData.postValue(error)
             }
