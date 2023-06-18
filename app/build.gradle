@@ -87,7 +87,7 @@ dependencies {
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
     implementation 'com.auth0.android:auth0:2.9.2'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1'
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.compose.ui:ui-test-junit4:1.0.0-alpha10'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
