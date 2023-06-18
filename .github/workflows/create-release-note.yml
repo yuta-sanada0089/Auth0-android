@@ -3,7 +3,7 @@ name: Create Release Notes
 on:
   push:
     tags:
-      - 'v*'
+      - '*'
 
 jobs:
   release:
