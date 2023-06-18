@@ -1,0 +1,23 @@
+name: Tag on Release Merge
+
+on:
+  pull_request:
+    types:
+      - closed
+    branches:
+      - master
+
+jobs:
+  create-tag:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true && startsWith(github.head_ref, 'release/v')
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Create Tag
+        run: |
+          TAG_NAME=${{ github.head_ref }}  # Extract 'release/vx.x.x' branch name
+          TAG_NAME=${TAG_NAME#release/v}   # Remove 'release/v' prefix
+          git tag $TAG_NAME
+          git push origin $TAG_NAME
